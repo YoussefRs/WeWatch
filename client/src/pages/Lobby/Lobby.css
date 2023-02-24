@@ -1,0 +1,42 @@
+.login-container {
+    position: fixed;
+    top: 50%;
+    height: 100vh;
+    width: 100%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(36, 36, 36);
+    text-transform: uppercase;
+}
+.out-btn {
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.text-input-field {
+    padding: 24px 12px;
+    border-radius: 7px;
+    font-size: 24px;
+    background: transparent;
+    color: white;
+}
+
+.text-input-field:focus {
+    outline: none;
+}
+
+.enter-room-button {
+    margin-top: 20px;
+    padding: 24px 12px;
+    font-size: 28px;
+    background: #31a24c;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 7px;
+}
+

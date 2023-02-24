@@ -1,0 +1,97 @@
+@import url('https://fonts.cdnfonts.com/css/gothix'); 
+.bg {
+    background: url(https://cdn.shopify.com/s/files/1/0557/3305/9741/articles/AdobeStock_150133920_1200x1200.jpg?v=1642681341) no-repeat 50% 50%;
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100vh;
+    width: 100%;
+}
+.box {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    border-radius: 0.625rem;
+    z-index: 2;
+	box-shadow: 2px 2px 2px 2px #ddd;
+    
+  }
+  
+  .box h2 {
+    margin: 0 0 1.875rem;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .box .input {
+    position: relative;
+  }
+  
+  .input >input {
+    width: 100%;
+    padding: 0.625rem 0;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 0.062rem;
+    margin-bottom: 1.875rem;
+    border: none;
+    border-bottom: 0.065rem solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  
+  .box .input label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.625rem 0;
+    font-size: 1rem;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  
+  .box .input input:focus ~ label,
+  .box .input input:valid ~ label,
+  .box .input input:not([value=""]) ~ label {
+    top: -1.125rem;
+    left: 0;
+    color: #03a9f4;
+    font-size: 0.75rem;
+  }
+  
+  .box input[type="submit"] {
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #03a9f4;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    border-radius: 0.312rem;
+    font-size: 1rem;
+  }
+  
+  .box input[type="submit"]:hover {
+    background-color: #1cb1f5;
+  }
+
+  .signup {
+    display: flex;
+    justify-content: flex-start;
+ }
+ .signup a {
+    padding: 21px;
+    color: #03a9f4;
+    text-transform: uppercase;
+ }
+ .signup a:hover {
+    text-decoration: underline;
+ }
+
+  

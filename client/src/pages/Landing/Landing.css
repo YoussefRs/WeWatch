@@ -1,0 +1,190 @@
+@import url('https://fonts.cdnfonts.com/css/webcomic-whore');
+
+.wrapper {
+    height: 100vh;
+    background: url(https://cdn.shopify.com/s/files/1/0557/3305/9741/articles/AdobeStock_150133920_1200x1200.jpg?v=1642681341) no-repeat 50% 50%;
+    background-size: cover;
+}
+.gif-overlay {
+    z-index: -1;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(14, 14, 14, 0.8);
+}
+
+
+.hero-gif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48vw;
+    height: 46vh;
+    background-size: cover;
+    animation-delay: 2s;
+    animation: animateGIF 4s cubic-bezier(0,.58,1,.58);
+}
+
+.hero-title {
+    position: absolute;
+    top: 40%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+.hero-title h1 {
+    color: red;
+    text-transform: uppercase;
+    font-family: 'Webcomic whore', sans-serif;
+    font-size: 80px;
+    margin-bottom: 0%;
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 4px;
+    text-shadow: -31px 0 rgb(0, 174, 255);
+    background: black;
+  }
+.glitch::after {
+    left: -3px;
+    text-shadow: -3px 0 blue;
+    background: black;
+}
+
+.glitch::before {
+    clip: rect(54px, 250px, 56px, 40px);
+}
+
+@keyframes noise-anim {
+    0% {
+      clip-path: inset(40% 0 61% 0);
+    }
+    20% {
+      clip-path: inset(92% 0 1% 0);
+    }
+    40% {
+      clip-path: inset(43% 0 1% 0);
+    }
+    60% {
+      clip-path: inset(25% 0 58% 0);
+    }
+    80% {
+      clip-path: inset(54% 0 7% 0);
+    }
+    100% {
+      clip-path: inset(58% 0 43% 0);
+    }
+}
+
+.glitch::before {
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+  
+.glitch::after {    
+    animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+p {
+    color: white;
+    font-family: Helvetica;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 7px;
+}
+/* .btn {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: red;
+    color: black;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0, .3);
+    font-size: 14px;
+    overflow: hidden;
+    cursor: pointer;
+} */
+
+span {
+    color: red;
+    text-decoration: underline;
+}
+
+
+
+@media(max-width: 900px) {
+    .watch, .hero-title p, .hero-gif {
+          display: none !important;
+    }
+
+    .hero-title {
+          top: 45%;
+          left: 50%;
+    }
+
+    .hero-title h1 {
+          font-size: 32px;
+    }
+}
+
+.btn {
+    height: 51px;
+    min-width: 218px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 51px;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid white;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: red;
+    color: black;
+  }
+
+  .features {
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: 44.5%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    display: flex;
+    justify-content: center;
+  }
+  .features > p {
+    height: 20px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 2px #ddd;
+    margin: 1%;
+    padding: 4% 1%;
+
+  }
+
+
+   
+  
