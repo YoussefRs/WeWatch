@@ -14,9 +14,9 @@ Powered by `React js`, `Redux-toolkit`, `Socket.io`, `Express.js` and `MySQL`.
 - run `cd/server` , `npm install` then `npm start` to run the server with the `port:5000`, you can define your own in `server/server.js`.
 
 # Upcoming features : 
+- User Profile customization.
+- Public and Private Rooms.
+- Authentication for Private rooms : A password to share with friends for custom Private rooms
+- Private message/tag a user in the group.
+- Voting for streaming a new video.
 
-## More supported media sources : 
-- Uploaded video or audio files (.mp4, .mp3, .m4a, .flac etc.)
-- Vimeo
-- SoundCloud
-## User Profile customization.
