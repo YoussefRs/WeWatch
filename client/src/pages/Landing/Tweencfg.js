@@ -2,7 +2,7 @@ import { TweenLite } from 'gsap';
 import { Linear, RoughEase } from 'gsap/all';
 
 export function animateTitle() {
-    TweenLite.fromTo(".hero-title h1", 0.3, {
+    TweenLite.fromTo([".hero-title h1", ".popcorn img"], 0.3, {
       x: -6,
       y: 2,
       opacity: 0,
@@ -55,7 +55,7 @@ export function animateTitle() {
         }),
         clearProps: "all"
       });
-      TweenLite.fromTo(".btn", 0.3, {
+      TweenLite.fromTo([".btn", ".register"], 0.3, {
         x: -6,
         y: 2,
         opacity: 0,
@@ -128,6 +128,6 @@ export function animateTitle() {
       clearProps: "all"
     });
 
-
+    //effects
 
   }

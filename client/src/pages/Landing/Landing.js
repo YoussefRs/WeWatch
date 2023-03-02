@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './Landing.css'
 import { animateTitle, animateBoxes } from './Tweencfg'
 import { useHistory } from 'react-router-dom'
+import popcorn from "./popcorn.png"
 
 function Landing() {
     const history = useHistory();
@@ -14,6 +15,8 @@ function Landing() {
     <div class="wrapper">
             <div class="hero-section"> 
                   <div class="hero-gif"></div>
+                  <div class="register"><a href="register">Register</a></div>
+                  <div class="popcorn"><img  src={popcorn} alt="pc"/></div>
                   <div class="hero-title">
                         <h1 class="glitch" data-text="Underrated">we watch</h1>
                         <p>Host <span>Youtube</span> Watch Party with Friends</p>

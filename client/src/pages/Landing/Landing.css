@@ -2,7 +2,7 @@
 
 .wrapper {
     height: 100vh;
-    background: url(https://cdn.shopify.com/s/files/1/0557/3305/9741/articles/AdobeStock_150133920_1200x1200.jpg?v=1642681341) no-repeat 50% 50%;
+    background: url(https://rare-gallery.com/uploads/posts/5340835-people-crowd-person-audience-black-and-white-silhouette-head-monochrome-watching-black-amp-white-autumn-behind-medium-mass-share-sharing-listen-watch-grey-gradient-png-images.jpg) no-repeat 50% 50%;
     background-size: cover;
 }
 .gif-overlay {
@@ -13,6 +13,19 @@
     height: 100vh;
     background: rgba(14, 14, 14, 0.8);
 }
+
+.popcorn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -145%);
+}
+.popcorn > img {
+  width: 10vw;
+  height: 20vh;
+}
+
+
 
 
 .hero-gif {
@@ -27,6 +40,28 @@
     animation: animateGIF 4s cubic-bezier(0,.58,1,.58);
 }
 
+.register {
+  z-index: 2;
+  position: fixed;
+  right: 140px;
+  line-height: 80px;
+  margin: 0 40px;
+  padding: 0 10px;
+  font-family: Helvetica;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 4px;
+}
+.register > a {
+  color: grey;
+}
+
+.register > a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 .hero-title {
     position: absolute;
     top: 40%;
@@ -36,7 +71,7 @@
 }
 
 .hero-title h1 {
-    color: red;
+    color: #ed0b0e;
     text-transform: uppercase;
     font-family: 'Webcomic whore', sans-serif;
     font-size: 80px;
@@ -108,21 +143,9 @@ p {
     font-size: 20px;
     letter-spacing: 7px;
 }
-/* .btn {
-    text-decoration: none;
-    text-transform: uppercase;
-    background-color: red;
-    color: black;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0, .3);
-    font-size: 14px;
-    overflow: hidden;
-    cursor: pointer;
-} */
 
 span {
-    color: red;
+    color: #ed0b0e;
     text-decoration: underline;
 }
 
@@ -160,7 +183,7 @@ span {
     cursor: pointer;
   }
   .btn:hover {
-    background-color: red;
+    background-color: #ed0b0e;
     color: black;
   }
 
@@ -175,13 +198,13 @@ span {
     justify-content: center;
   }
   .features > p {
-    height: 20px;
+    height: 10px;
     font-size: 12px;
     letter-spacing: 3px;
     box-sizing: border-box;
-    box-shadow: 1px 1px 2px #ddd;
     margin: 1%;
     padding: 4% 1%;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
   }
 

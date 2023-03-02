@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux' 
-
 import { Link } from "react-router-dom"; 
-
 import './Lobby.css'  
 
 function Lobby(props) { 
 
     const username = useSelector((state) => state.user.username)
     const [roomName, setRoomName] = useState('')  
+    
 
     const roomNameChangeHandler = e => {
         setRoomName(e.target.value)
     }
-
-
+   
     useEffect(() => {
         if(props.location.state) {
             const {roomId} = props.location.state.from;
@@ -35,6 +33,7 @@ function Lobby(props) {
             <Link to={`/${roomName}`} className="enter-room-button">
                 Join/Create
             </Link>
+            
         </div>
             
         </div>

@@ -10,7 +10,6 @@ function Login() {
     email : '',
     password : ''
   })
-  console.log(userLog)
   const handleChange = (e) => {  
     setUserLog({
       ...userLog, [e.target.name] : e.target.value
@@ -42,7 +41,7 @@ function Login() {
           </div>
           <input type="submit" name="sign-in" value='login'/>
           <div className='signup'>
-            <h4>Don't have an account ? : </h4>
+            <h4>Create account </h4>
             <a href='/register'>Sign Up</a>
           </div>
         </form>
