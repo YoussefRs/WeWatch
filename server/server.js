@@ -5,9 +5,9 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const scraper = require('./scraper')
 
-const SERVER_USERNAME = "System Message";
+const SERVER_USERNAME = "Room BOT";
 
-const { addUserToRoom, getUserByIdFromRoom, deleteUserFromRoom, getUsersFromRoom, setRoomHostById, getTotalUsersInRoom, getHostIdFromRoom, deleteUserRoom } = require('./users')
+const { addUserToRoom, getUserByIdFromRoom, deleteUserFromRoom, getUsersFromRoom, setRoomHostById, getTotalUsersInRoom, getHostIdFromRoom, deleteUserRoom, rooms } = require('./users')
 const { RegisterUser, UserLogin, LoginStatus, UserLogout, UploadImage } = require('./controllers/user')
 const { getCurrentTime } = require('./time')
 
@@ -15,15 +15,16 @@ var app = express()
 var http = require('http').createServer(app)
 const io = require("socket.io")(http, {
     cors: {
-        origin: '*', 
+        origin: '*', // TODO: change this in production
     }
 });
 var corsOptions = {
-    origin: '*', 
-    optionsSuccessStatus: 200, 
+    origin: '*', // TODO: change this in production
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     Credential : false,
     methods: ["GET", "POST"]
 }
+
 
 app.use(
     cors({
@@ -53,7 +54,7 @@ app.get('/', function (req, res) {
 
 
 //API route
-app.post("/register", RegisterUser );
+app.post("/register", RegisterUser);
 app.post("/login", UserLogin );
 app.post("/logout", UserLogout );
 app.get("/login", LoginStatus );
@@ -64,31 +65,44 @@ app.get('/api/search', cors(corsOptions), (req, res) => {
 });
 
 
-http.listen(5000, function () {
+http.listen(process.env.PORT || 5000, function () {
+    var host = http.address().address
     var port = http.address().port
-    console.log('Server is alive on', port)
+    console.log('App listening at http://%s:%s', host, port)
 });
 
 io.on('connection', function (socket) {
 
-    socket.on('join', ({ username, roomId }, callback) => {
+    socket.on('join', ({ username, roomId}, callback) => {
         const user = addUserToRoom(socket.id, username, roomId)
         socket.join(roomId)
-
+        
         if (user.host) {
             io.to(socket.id).emit('server:promote-to-host');
+            
         }
 
         io.to(roomId).emit('server:new-joiner', { username: SERVER_USERNAME, content: `${username} just entered the room!`, time: getCurrentTime(), isServer: true }); // emit to all in room
 
         io.to(roomId).emit('server:total-users', { totalUsers: getTotalUsersInRoom(roomId) }); // emit to all in room
 
+        // socket.on('kick', ({ username }) => {
+        //     const userToKick = getUserByUsernameFromRoom(username, roomId);
+          
+        //     if (userToKick) {
+        //       io.to(userToKick.id).emit('server:message', { username: SERVER_USERNAME, content: 'You have been kicked from the room!', time: getCurrentTime(), isServer: true });
+              
+        //       deleteUserFromRoom(userToKick.id, roomId);
+        //     }
+        //   });
+       
+
         socket.on("disconnect", () => {
             const wasHost = getUserByIdFromRoom(socket.id, roomId).host
 
             deleteUserFromRoom(socket.id, roomId)
 
-            io.to(roomId).emit('server:disconnected', { username: SERVER_USERNAME, content: `${username} has just disconnected!`, time: getCurrentTime(), isServer: true }); // emit to all in room          
+            io.to(roomId).emit('server:disconnected', { username: SERVER_USERNAME, content: `${username} has left the party`, time: getCurrentTime(), isServer: true }); // emit to all in room          
 
             if (getTotalUsersInRoom(roomId) > 0 && wasHost) {
                 let randomUser = getUsersFromRoom(roomId)[0]
@@ -103,6 +117,10 @@ io.on('connection', function (socket) {
             }
         });
     });
+
+    
+
+    
 
     socket.on('client:request-sync', ({ roomId }, callback) => {
         io.to(getHostIdFromRoom(roomId)).emit('server:request-host-data');
@@ -124,15 +142,18 @@ io.on('connection', function (socket) {
         socket.to(roomId).emit('server:message', { username, content, time: getCurrentTime(), isServer })
     });
 
-    socket.on('client:play', ({ roomId }, callback) => {
-        socket.to(roomId).emit('server:play', {})
+    socket.on('client:play', ({ roomId, username }, callback) => {
+        socket.to(roomId).emit('server:play', {username: SERVER_USERNAME, content: `${username} has resumed the video`, time: getCurrentTime(), isServer: true })
     });
 
-    socket.on('client:pause', ({ roomId }, callback) => {
-        socket.to(roomId).emit('server:pause', {})
+    socket.on('client:pause', ({ roomId, username }, callback) => {
+        socket.to(roomId).emit('server:pause', {username: SERVER_USERNAME, content: `${username} has paused the video`, time: getCurrentTime(), isServer: true })
+        
     });
 
     socket.on('client:update-playbackRate', ({ roomId, playbackRate }, callback) => {
         socket.to(roomId).emit('server:update-playbackRate', { playbackRate })
     });
+
+    
 })
