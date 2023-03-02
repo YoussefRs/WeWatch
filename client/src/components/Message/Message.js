@@ -1,14 +1,13 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 import Identicon from 'react-identicons';
 
 import './Message.css'
 
-function Message({msg}) {
-
+function Message({msg, socket}) {
+    
     // Randomly chosen foreground colours for profile pic
     const profileFgPalette = ["#4c96ed", "#ed4ceb", "#4cede7", "#ede517", "#ed5417", "#e52925"]
-    
+   
     return (
         <div className="message-container">
             <div className="profile">
@@ -16,8 +15,12 @@ function Message({msg}) {
             </div>
             <div className="message-content">
                 <div className="message-top-content">
-                    <div className="username">{msg.username ? msg.username : "Unknown"}</div>
-                    <div className="time">{msg.time}</div>
+                    <div className="username" style={{ color: msg.username === "Room BOT" ? "red" : "yellow" }}>
+                        {msg.username ? msg.username : "Unknown"}
+                        </div>
+                    <div className="time">
+                        {msg.time}
+                    </div>
                 </div>
                 <div className="message">
                     {msg.content}

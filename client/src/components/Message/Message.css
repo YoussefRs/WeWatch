@@ -35,7 +35,7 @@
 }
 
 .username {
-    color: rgb(255, 255, 255);
+    color: yellow;
     font-size: 0.8rem;
 }
 
@@ -49,4 +49,18 @@
 
 .time {
     font-size: 0.63rem;
+    margin-right: 25px;
 }
+
+.time>button {
+    height: 20px;
+    width: 30px;
+    margin: auto 0;
+    border-radius: 10px;
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
