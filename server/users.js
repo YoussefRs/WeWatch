@@ -1,21 +1,19 @@
 const rooms = {}
-
 const addUserToRoom = (id, username, roomId) => {
     let shouldHost = false 
 
-    // create a room if its new
     if (rooms[roomId] === undefined) {
         rooms[roomId] = []
 
-    // first user is host
         shouldHost = true
     }
-
+    
     const user = { id, username, host: shouldHost }
+    user.username = username;
     rooms[roomId] = [...rooms[roomId], user]
-
     return user
 }
+
 
 const deleteUserRoom = (roomId) => {
     delete rooms[roomId]
@@ -94,6 +92,8 @@ const getTotalUsersInRoom = (roomId) => {
 }
 
 
+
+
 module.exports = {
     addUserToRoom,
     deleteUserFromRoom,
@@ -103,4 +103,5 @@ module.exports = {
     getTotalUsersInRoom,
     getHostIdFromRoom,
     deleteUserRoom,
+    rooms,
 }

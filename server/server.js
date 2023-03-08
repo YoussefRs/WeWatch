@@ -8,19 +8,19 @@ const scraper = require('./scraper')
 const SERVER_USERNAME = "Room BOT";
 
 const { addUserToRoom, getUserByIdFromRoom, deleteUserFromRoom, getUsersFromRoom, setRoomHostById, getTotalUsersInRoom, getHostIdFromRoom, deleteUserRoom, rooms } = require('./users')
-const { RegisterUser, UserLogin, LoginStatus, UserLogout, UploadImage } = require('./controllers/user')
+const { RegisterUser, UserLogin, LoginStatus, UserLogout} = require('./controllers/user')
 const { getCurrentTime } = require('./time')
 
 var app = express()
 var http = require('http').createServer(app)
 const io = require("socket.io")(http, {
     cors: {
-        origin: '*', // TODO: change this in production
+        origin: '*', 
     }
 });
 var corsOptions = {
-    origin: '*', // TODO: change this in production
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: '*', 
+    optionsSuccessStatus: 200, 
     Credential : false,
     methods: ["GET", "POST"]
 }
@@ -48,16 +48,20 @@ app.use(
   })
 );
 app.get('/', function (req, res) {
-    res.send('Youtube Watch Party Server')
+    res.send('We Watch Server')
 });
 
 
 
 //API route
+
 app.post("/register", RegisterUser);
 app.post("/login", UserLogin );
 app.post("/logout", UserLogout );
 app.get("/login", LoginStatus );
+app.get('/rooms', (req,res) => {
+    res.send(rooms)
+});
 app.get('/api/search', cors(corsOptions), (req, res) => {
     scraper.youtube(req.query.q, req.query.key, req.query.pageToken)
         .then(x => res.json(x))
@@ -65,10 +69,8 @@ app.get('/api/search', cors(corsOptions), (req, res) => {
 });
 
 
-http.listen(process.env.PORT || 5000, function () {
-    var host = http.address().address
-    var port = http.address().port
-    console.log('App listening at http://%s:%s', host, port)
+http.listen(5000, function () {
+    console.log('Server Alive on 5000')
 });
 
 io.on('connection', function (socket) {
@@ -122,36 +124,36 @@ io.on('connection', function (socket) {
 
     
 
-    socket.on('client:request-sync', ({ roomId }, callback) => {
+    socket.on('client:request-sync', ({ roomId }) => {
         io.to(getHostIdFromRoom(roomId)).emit('server:request-host-data');
     });
 
-    socket.on('client:host-data', ({ playing, currentTime, playbackRate, roomId }, callback) => {
+    socket.on('client:host-data', ({ playing, currentTime, playbackRate, roomId }) => {
         socket.to(roomId).emit('server:host-data', { playing, currentTime, playbackRate })
     });
 
-    socket.on('client:video-change', ({ videoCode, roomId }, callback) => {
+    socket.on('client:video-change', ({ videoCode, roomId }) => {
         socket.to(roomId).emit('server:video-change', { videoCode })
     });
 
-    socket.on('client:seekTo', ({ username, currentTime, roomId }, callback) => {
+    socket.on('client:seekTo', ({ username, currentTime, roomId }) => {
         socket.to(roomId).emit('server:seekTo', { username, currentTime, isServer: true })
     });
 
-    socket.on('client:message', ({ username, content, roomId, isServer }, callback) => {
+    socket.on('client:message', ({ username, content, roomId, isServer }) => {
         socket.to(roomId).emit('server:message', { username, content, time: getCurrentTime(), isServer })
     });
 
-    socket.on('client:play', ({ roomId, username }, callback) => {
+    socket.on('client:play', ({ roomId, username }) => {
         socket.to(roomId).emit('server:play', {username: SERVER_USERNAME, content: `${username} has resumed the video`, time: getCurrentTime(), isServer: true })
     });
 
-    socket.on('client:pause', ({ roomId, username }, callback) => {
+    socket.on('client:pause', ({ roomId, username }) => {
         socket.to(roomId).emit('server:pause', {username: SERVER_USERNAME, content: `${username} has paused the video`, time: getCurrentTime(), isServer: true })
         
     });
 
-    socket.on('client:update-playbackRate', ({ roomId, playbackRate }, callback) => {
+    socket.on('client:update-playbackRate', ({ roomId, playbackRate }) => {
         socket.to(roomId).emit('server:update-playbackRate', { playbackRate })
     });
 

@@ -193,11 +193,11 @@ function parseVideoRenderer(renderer) {
         "snippet": renderer.descriptionSnippet ?
                    renderer.descriptionSnippet.runs.reduce((a, b) => a + (b.bold ? `<b>${b.text}</b>` : b.text), ""):
                    "",
-        // "upload_date": renderer.publishedTimeText ? renderer.publishedTimeText.simpleText : "Live",
+        "upload_date": renderer.publishedTimeText ? renderer.publishedTimeText.simpleText : "Live",
         "thumbnail_src": renderer.thumbnail.thumbnails[renderer.thumbnail.thumbnails.length - 1].url,
-        // "views": renderer.viewCountText ?
-        //     renderer.viewCountText.simpleText || renderer.viewCountText.runs.reduce(comb, "") :
-        //     (renderer.publishedTimeText ? "0 views" : "0 watching")
+        "views": renderer.viewCountText ?
+            renderer.viewCountText.simpleText || renderer.viewCountText.runs.reduce(comb, "") :
+            (renderer.publishedTimeText ? "0 views" : "0 watching")
     };
 
     let uploader = {
