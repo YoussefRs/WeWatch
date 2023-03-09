@@ -28,6 +28,7 @@ function PartyRoom(props) {
         socket.emit('join', { username: username, roomId }, error => { });
 
         setServerStatus(socket.connected);
+
         socket.on("disconnect", () => {
             setServerStatus(socket.connected); 
         });
@@ -43,7 +44,7 @@ function PartyRoom(props) {
                 <Suggested socket={socket} />
            
             <div className="right-wrapper">
-                <TopBar/>
+                <TopBar />
                 <div className="right-container"> 
                     <VideoPlayer socket={socket} />
                     <ChatBox socket={socket} />

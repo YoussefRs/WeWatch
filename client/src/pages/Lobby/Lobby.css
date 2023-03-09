@@ -43,3 +43,12 @@
     border-radius: 7px;
 }
 
+.roomLink {
+    color: #ed0b0e;
+    font-size: 25px;
+    letter-spacing: 6px;
+}
+.roomLink:hover {
+    text-decoration: underline;
+}
+

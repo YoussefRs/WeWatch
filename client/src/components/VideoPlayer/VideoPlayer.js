@@ -42,6 +42,7 @@ function VideoPlayer({ socket }) {
 
             const newPacket = {
                 roomId: roomId,
+                username : username
             };
 
             socket.emit("client:play", newPacket);
@@ -55,6 +56,7 @@ function VideoPlayer({ socket }) {
         if (remoteControl.current === false) {
             const newPacket = {
                 roomId: roomId,
+                username : username
             };
 
             socket.emit("client:pause", newPacket);
@@ -133,6 +135,7 @@ function VideoPlayer({ socket }) {
         socket.on("server:pause", (packet) => {
             remoteControl.current = true;
             dispatch(setVideoIsPlaying({ playing: false }));
+            
         });
 
         socket.on("server:update-playbackRate", (packet) => { 
@@ -168,7 +171,7 @@ function VideoPlayer({ socket }) {
                 progressInterval={1000}
                 onProgress={onProgressHandler}
                 onPlaybackRateChange={playbackRateChangeHandler} />
-            {/* <h3>{isHost ? "i am the host!" : "not the host!"}</h3> */}
+            {/* <h3>{isHost ? <h1>I HOST</h1> : "not the host!"}</h3> */}
         </div>
     )
 }

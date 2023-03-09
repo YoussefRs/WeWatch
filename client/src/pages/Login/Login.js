@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux' 
-import { setLoginStatus, setUsername } from 'redux/UserSlice';
+import { setLoginStatus, setUsername, setUserUrlPic } from 'redux/UserSlice';
 import './Login.css'
 
 function Login() {
@@ -22,7 +22,7 @@ function Login() {
       dispatch(setUsername({username : res.data.info[0].username}))
       dispatch(setLoginStatus(true))
       window.location.href = '/lobby';
-    }).catch(err => console.log(err))
+    })
   }
 
   return (
@@ -41,7 +41,7 @@ function Login() {
           </div>
           <input type="submit" name="sign-in" value='login'/>
           <div className='signup'>
-            <h4>Create account </h4>
+            <h4>Create account:</h4>
             <a href='/register'>Sign Up</a>
           </div>
         </form>

@@ -45,16 +45,25 @@
     align-items: center;
     margin-right: 15px;
 }
+
+button {
+    margin: auto 0;
+    border-radius: 10px;
+    background-color: var(--text-color);
+    color: black;
+    border: none;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-bg);
+    color: white;
+}
  
-.profile-container > img {
+/* .profile-container > img {
     width: 40px;  
     height: 40px;  
     border-radius: 10px;
     object-fit:cover; 
-} 
-.profile-container > img {
-    width: 40px;  
-    height: 40px;  
-    border-radius: 10px;
-    object-fit:cover; 
-} 
+}  */

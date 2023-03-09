@@ -1,6 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/gothix'); 
 .bg {
-    background: url(https://rare-gallery.com/uploads/posts/5340835-people-crowd-person-audience-black-and-white-silhouette-head-monochrome-watching-black-amp-white-autumn-behind-medium-mass-share-sharing-listen-watch-grey-gradient-png-images.jpg) no-repeat 50% 50%;
+    background: url(https://w7.pngwing.com/pngs/926/948/png-transparent-popcorn-discount-theater-film-cinema-movie-theatre-computer-wallpaper-film-poster-stock-photography.png) no-repeat 50% 50%;
     background-size: cover;
     filter: blur(8px);
     -webkit-filter: blur(8px);
@@ -27,7 +27,6 @@
     padding: 0;
     color: #ed0b0e;
     text-align: center;
-    font-family: 'Gothix', sans-serif;
     letter-spacing: 14px;
     text-transform: uppercase;
     text-decoration: underline;
@@ -68,7 +67,6 @@
     left: 0;
     color: white;
     font-size: 0.75rem;
-    font-family: 'Gothix', sans-serif;
     text-transform: uppercase;
     letter-spacing: 5px;
   }
@@ -86,7 +84,7 @@
     cursor: pointer;
     border-radius: 0.312rem;
     font-size: 1rem;
-    font-family: 'Gothix', sans-serif;
+    
     letter-spacing: 4px;
   }
   
@@ -103,7 +101,7 @@
 
  .signup h4 {
   color: white;
-  font-family: 'Gothix', sans-serif;
+  
   letter-spacing: 2px;
   text-transform: uppercase;
  }
@@ -112,7 +110,7 @@
     padding: 21px;
     color: white;
     text-transform: uppercase;
-    font-family: 'Gothix', sans-serif;
+    
  }
  .signup a:hover {
     text-decoration: underline;

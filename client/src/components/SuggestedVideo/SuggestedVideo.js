@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
 import { setVideoURL, setPlayingTitle } from 'redux/VideoPlayerSlice'
-
+import popcorn from "./popcorn.png"
 import './SuggestedVideo.css'
 
 function SuggestedVideo({ video, socket }) {
@@ -41,8 +41,8 @@ function SuggestedVideo({ video, socket }) {
           <div className="suggested-views">
             {video.views}
           </div>
-          <div className="suggested-year">
-            {video.published}
+          <div className="popcorn-img">
+            <img src={popcorn} />
           </div>
         </div>
       </div>

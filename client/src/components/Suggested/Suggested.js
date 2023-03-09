@@ -14,7 +14,7 @@ function Suggested({ socket }) {
     const movieMode = useSelector((state) => state.room.movieMode)
 
     useEffect(() => {
-        scrapeVideos(searchQuery, 10).then((data) => {
+        scrapeVideos(searchQuery, 12).then((data) => {
             setVideos([]); 
 
             data.map((item) => {

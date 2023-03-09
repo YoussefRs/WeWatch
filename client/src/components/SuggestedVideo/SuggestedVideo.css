@@ -68,3 +68,11 @@ a {
 .overlay-play > img {
     width: 100px;
 }
+
+.popcorn-img {
+   height: 20px;
+}
+.popcorn-img >img {
+    width: 75px;
+    height: 60px;
+}

@@ -2,7 +2,7 @@
 
 .wrapper {
     height: 100vh;
-    background: url(https://rare-gallery.com/uploads/posts/5340835-people-crowd-person-audience-black-and-white-silhouette-head-monochrome-watching-black-amp-white-autumn-behind-medium-mass-share-sharing-listen-watch-grey-gradient-png-images.jpg) no-repeat 50% 50%;
+    background: url(https://w7.pngwing.com/pngs/926/948/png-transparent-popcorn-discount-theater-film-cinema-movie-theatre-computer-wallpaper-film-poster-stock-photography.png) no-repeat 50% 50%;
     background-size: cover;
 }
 .gif-overlay {
@@ -82,59 +82,7 @@
     position: relative;
 }
 
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
-.glitch::before {
-    left: 4px;
-    text-shadow: -31px 0 rgb(0, 174, 255);
-    background: black;
-  }
-.glitch::after {
-    left: -3px;
-    text-shadow: -3px 0 blue;
-    background: black;
-}
-
-.glitch::before {
-    clip: rect(54px, 250px, 56px, 40px);
-}
-
-@keyframes noise-anim {
-    0% {
-      clip-path: inset(40% 0 61% 0);
-    }
-    20% {
-      clip-path: inset(92% 0 1% 0);
-    }
-    40% {
-      clip-path: inset(43% 0 1% 0);
-    }
-    60% {
-      clip-path: inset(25% 0 58% 0);
-    }
-    80% {
-      clip-path: inset(54% 0 7% 0);
-    }
-    100% {
-      clip-path: inset(58% 0 43% 0);
-    }
-}
-
-.glitch::before {
-    animation: noise-anim 2s infinite linear alternate-reverse;
-}
-  
-.glitch::after {    
-    animation: noise-anim 2s infinite linear alternate-reverse;
-}
 
 p {
     color: white;

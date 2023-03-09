@@ -4,7 +4,7 @@ export const RoomSlice = createSlice({
     name: 'room',
     initialState: {
         roomId: '',
-        movieMode: false,
+        movieMode: false
     },
     reducers: {
         setRoomId: (state, action) => {
@@ -17,6 +17,6 @@ export const RoomSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setRoomId, setMovieMode } = RoomSlice.actions
+export const { setRoomId, setMovieMode, setRoomInfo } = RoomSlice.actions
 
 export default RoomSlice.reducer

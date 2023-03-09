@@ -5,11 +5,10 @@
     flex: 1;
     background-color: var(--component-bg);
     color: var(--text-color);
-
     border: 1px solid var(--seperator);
-
     cursor: pointer;
     overflow-y: scroll;
+    
 }
 
 .hide {

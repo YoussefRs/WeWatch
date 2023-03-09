@@ -6,6 +6,7 @@ import Message from 'components/Message'
 import { addMessage, setMessage, setHost } from 'redux/ChatSlice';  
 
 import './ChatBox.css'
+import { setNewJoiner } from 'redux/UserSlice';
 
 function ChatBox({ socket }) {
     const dispatch = useDispatch()  
@@ -13,7 +14,7 @@ function ChatBox({ socket }) {
     const [totalUsers, setTotalUsers] = useState(0);
 
     const username = useSelector((state) => state.user.username)
-
+    
     const messages = useSelector((state) => state.chat.messages)
     const message = useSelector((state) => state.chat.message)
 
@@ -32,6 +33,11 @@ function ChatBox({ socket }) {
         socket.on("server:new-joiner", (packet) => {
             const newPacket = { username: packet.username, content: packet.content, time: packet.time, isServer: packet.isServer }
 
+            dispatch(addMessage({ msg: newPacket }));
+        });
+        socket.on("join-req", (packet) => {
+            const newPacket = { username: packet.username, content: packet.content }
+            dispatch(setNewJoiner(packet.user))
             dispatch(addMessage({ msg: newPacket }));
         });
 
@@ -54,12 +60,22 @@ function ChatBox({ socket }) {
 
             dispatch(addMessage({ msg: newPacket }));
         });
+
+        socket.on("server:pause", (packet) => {
+            const newPacket = { username: packet.username, content: packet.content, time: packet.time, isServer: packet.isServer }
+
+            dispatch(addMessage({ msg: newPacket }));
+        });
+
+        socket.on("server:play", (packet) => {
+            const newPacket = { username: packet.username, content: packet.content, time: packet.time, isServer: packet.isServer }
+
+            dispatch(addMessage({ msg: newPacket }));
+        });
     }, [])
 
     function sendMessage(e) {
         e.preventDefault();
-
-        // ignore empty messages
         if(message === '') {
             return
         }
@@ -91,7 +107,7 @@ function ChatBox({ socket }) {
             </div>
             <div ref={ref} className="messages">
                 {messages.map((msg, index) => (
-                    <Message key={index} msg={msg} />
+                    <Message key={index} msg={msg} socket={socket} roomId={roomId}/>
                 ))}
             </div>
             <form onSubmit={sendMessage}>

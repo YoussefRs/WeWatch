@@ -21,7 +21,7 @@ function TopBar() {
             <div className="currently-watching"><span className="bold">Currently Playing:</span> {playingTitle}</div>
           </div>
           <div className="profile-container">
-            <button className="profile-pic-img"><Logout/></button>
+            <button ><Logout /></button>
             <div className="profile-details">
             </div>
           </div>

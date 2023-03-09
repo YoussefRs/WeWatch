@@ -2,12 +2,18 @@
 .signin {
   display: flex;
   justify-content: flex-start;
-    }
-     .signin a {
-   padding: 21px;
-    color: #03a9f4;
-    text-transform: uppercase;
+}
+.signin a {
+  padding: 21px;
+  color: white;
+  text-transform: uppercase;
  }
-    .signin a:hover {
-    text-decoration: underline;
-   }              
+.signin a:hover {
+  text-decoration: underline;
+  color: #ed0b0e;
+}     
+.signin h4 {
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+ }         
