@@ -81,23 +81,14 @@ io.on('connection', function (socket) {
         
         if (user.host) {
             io.to(socket.id).emit('server:promote-to-host');
-            
-        }
+        } 
+
+        
 
         io.to(roomId).emit('server:new-joiner', { username: SERVER_USERNAME, content: `${username} just entered the room!`, time: getCurrentTime(), isServer: true }); // emit to all in room
 
         io.to(roomId).emit('server:total-users', { totalUsers: getTotalUsersInRoom(roomId) }); // emit to all in room
-
-        // socket.on('kick', ({ username }) => {
-        //     const userToKick = getUserByUsernameFromRoom(username, roomId);
-          
-        //     if (userToKick) {
-        //       io.to(userToKick.id).emit('server:message', { username: SERVER_USERNAME, content: 'You have been kicked from the room!', time: getCurrentTime(), isServer: true });
-              
-        //       deleteUserFromRoom(userToKick.id, roomId);
-        //     }
-        //   });
-       
+        
 
         socket.on("disconnect", () => {
             const wasHost = getUserByIdFromRoom(socket.id, roomId).host
@@ -121,7 +112,13 @@ io.on('connection', function (socket) {
     });
 
     
+    socket.on('join-request', data => {
+        io.to(getHostIdFromRoom(data.roomId)).emit('join-req', { username: SERVER_USERNAME, content: `${data.username} wants to join`, user : data.username} )
+    })
 
+    socket.on('accepted', ({roomId, username}) => {
+        io.emit('req-accepted', { roomId : roomId, username})
+    })
     
 
     socket.on('client:request-sync', ({ roomId }) => {
