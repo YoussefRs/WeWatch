@@ -15,7 +15,7 @@ Powered by `React js`, `Redux-toolkit`, `Socket.io`, `Express.js` and `MySQL`.
 
 # Upcoming features : 
 - User Profile customization.
-- Public and Private Rooms.
+- Join Requests. (DONE)
 - Authentication for Private rooms : A password to share with friends for custom Private rooms
 - Private message/tag a user in the group.
 - Voting for streaming a new video.
