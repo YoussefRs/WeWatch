@@ -6,7 +6,8 @@ export const UserSlice = createSlice({
         isLoggedIn : false,
         username : "",
         userUrlPic : "",
-        newJoiner : ""
+        newJoiner : "",
+        newJoinerId: ""
 
     },
     reducers : {
@@ -21,9 +22,12 @@ export const UserSlice = createSlice({
         },
         setNewJoiner : (state, action) => {
             state.newJoiner = action.payload
+        },
+        setNewJoinerId : (state, action) => {
+            state.newJoinerId = action.payload
         }
     }
 })
 
-export const {setLoginStatus, setUsername, setUserUrlPic, setNewJoiner} = UserSlice.actions;
+export const {setLoginStatus, setUsername, setUserUrlPic, setNewJoiner, setNewJoinerId} = UserSlice.actions;
 export default UserSlice.reducer;

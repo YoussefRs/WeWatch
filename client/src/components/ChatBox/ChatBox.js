@@ -6,7 +6,7 @@ import Message from 'components/Message'
 import { addMessage, setMessage, setHost } from 'redux/ChatSlice';  
 
 import './ChatBox.css'
-import { setNewJoiner } from 'redux/UserSlice';
+import { setNewJoiner, setNewJoinerId } from 'redux/UserSlice';
 
 function ChatBox({ socket }) {
     const dispatch = useDispatch()  
@@ -39,6 +39,7 @@ function ChatBox({ socket }) {
             const newPacket = { username: packet.username, content: packet.content }
             dispatch(setNewJoiner(packet.user))
             dispatch(addMessage({ msg: newPacket }));
+            dispatch(setNewJoinerId(packet.joinerId))
         });
 
         socket.on("server:total-users", (packet) => { 

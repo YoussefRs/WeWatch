@@ -9,10 +9,10 @@ function Message({msg, socket, roomId}) {
     const profilePic = useSelector((state) => state.user.userUrlPic)
     // Randomly chosen foreground colours for profile pic
     const profileFgPalette = ["#4c96ed", "#ed4ceb", "#4cede7", "#ede517", "#ed5417", "#e52925"]
-
+    const joinerId = useSelector(state => state.user.newJoinerId)
     const username = useSelector(state => state.user.newJoiner)
     const accept = () => {
-        socket.emit('accepted', { roomId, username})
+        socket.emit('accepted', { roomId, username, joinerId})
     }
 
     return (

@@ -41,7 +41,7 @@ function Lobby(props) {
         if (toRoom) {
             props.history.push(`/${toRoom}`);
           }
-    }, [props.history, toRoom, roomName]);
+    }, [props.history, toRoom, roomInfo]);
 
     const sendJoinRequest = (roomId) => {
         socket.emit('join-request', { username, roomId }, () => {
