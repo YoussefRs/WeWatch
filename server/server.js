@@ -7,7 +7,7 @@ const scraper = require('./scraper')
 
 const SERVER_USERNAME = "Room BOT";
 
-const { addUserToRoom, getUserByIdFromRoom, deleteUserFromRoom, getUsersFromRoom, setRoomHostById, getTotalUsersInRoom, getHostIdFromRoom, deleteUserRoom, rooms } = require('./users')
+const { addUserToRoom, getUserByIdFromRoom, deleteUserFromRoom, getUserIdByNameFromRoom, getUsersFromRoom, setRoomHostById, getTotalUsersInRoom, getHostIdFromRoom, deleteUserRoom, rooms } = require('./users')
 const { RegisterUser, UserLogin, LoginStatus, UserLogout} = require('./controllers/user')
 const { getCurrentTime } = require('./time')
 
@@ -113,11 +113,13 @@ io.on('connection', function (socket) {
 
     
     socket.on('join-request', data => {
-        io.to(getHostIdFromRoom(data.roomId)).emit('join-req', { username: SERVER_USERNAME, content: `${data.username} wants to join`, user : data.username} )
+        io.to(getHostIdFromRoom(data.roomId)).emit('join-req', { username: SERVER_USERNAME, content: `${data.username} wants to join`, user : data.username, joinerId : socket.id} )
     })
 
-    socket.on('accepted', ({roomId, username}) => {
-        io.emit('req-accepted', { roomId : roomId, username})
+    
+
+    socket.on('accepted', ({roomId, username, joinerId}) => {
+        io.to(joinerId).emit('req-accepted', { roomId : roomId, username})
     })
     
 
